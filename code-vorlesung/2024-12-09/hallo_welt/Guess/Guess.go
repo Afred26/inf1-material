@@ -1,10 +1,10 @@
-package main
+package guess
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
-func main() {
-	GuessingGame()
-}
 func ReadNumber() int {
 	var n int
 	fmt.Print("Rate eine Zahl: ")
@@ -13,9 +13,10 @@ func ReadNumber() int {
 }
 
 func GuessingGame() {
-	for i := 0; i < 3; i++ {
+	Zufall := Zufallszahl()
+	for i := 0; i < 5; i++ {
 		guess := ReadNumber()
-		Zufall := Zufallszahl()
+
 		if NumberGood(guess, Zufall) {
 			fmt.Println("Richtige geraten! xD")
 			return
@@ -34,6 +35,6 @@ func NumberGood(n, z int) bool {
 }
 
 func Zufallszahl() int {
-	z := ReadNumber()
+	z := rand.Intn(5)
 	return z
 }
