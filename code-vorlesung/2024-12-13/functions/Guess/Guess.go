@@ -2,16 +2,22 @@ package guess
 
 import (
 	"fmt"
+	"math"
 	"math/rand"
 )
 
 func GuessingGame() {
-	Zufall := Zufallszahl()
-	for i := 0; i < 5; i++ {
+
+	var s, länge int
+	fmt.Println("Wie lange möchten Sie spielen?")
+	fmt.Scanln(&länge)
+	fmt.Println("Wie schwierig soll es sein?")
+	fmt.Scanln(&s)
+	Zufall := Zufallszahl(länge, s)
+	for i := 0; i < länge; i++ {
 		guess := ReadNumber()
 
 		if NumberGood(guess, Zufall) {
-			fmt.Println("Richtige geraten! xD")
 			return
 		}
 	}
@@ -29,6 +35,7 @@ func ReadNumber() int {
 func NumberGood(guess, Zufall int) bool {
 
 	if guess == Zufall {
+		fmt.Println("Richtige geraten! xD")
 		return true
 	} else {
 		if guess > Zufall {
@@ -42,7 +49,9 @@ func NumberGood(guess, Zufall int) bool {
 
 }
 
-func Zufallszahl() int {
-	z := rand.Intn(16) + 1
+func Zufallszahl(länge, s int) int {
+	q := float64(länge + s)
+	p := int(math.Pow(2, q))
+	z := rand.Intn(p) + 1
 	return z
 }
