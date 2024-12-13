@@ -1,0 +1,45 @@
+package guess
+
+import (
+	"fmt"
+	"math/rand"
+)
+
+func GuessingGame() {
+	Zufall := Zufallszahl()
+	for i := 0; i < 5; i++ {
+		guess := ReadNumber()
+
+		if NumberGood(guess, Zufall) {
+			fmt.Println("Richtige geraten! xD")
+			return
+		} else {
+			if guess > Zufall {
+				fmt.Println("Zahl zu groß")
+			}
+			if guess < Zufall {
+				fmt.Println("Zahl zu klein")
+			}
+		}
+	}
+	fmt.Println("Zuviele falsche Zahlen! :(")
+	fmt.Println("Die richtige Zahl war", Zufall)
+}
+
+func ReadNumber() int {
+	var n int
+	fmt.Print("Rate eine Zahl: ")
+	fmt.Scan(&n)
+	return n
+}
+
+func NumberGood(n, z int) bool {
+
+	return n == z
+
+}
+
+func Zufallszahl() int {
+	z := rand.Intn(5)
+	return z
+}
