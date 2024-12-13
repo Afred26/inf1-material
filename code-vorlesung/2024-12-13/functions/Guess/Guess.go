@@ -13,13 +13,6 @@ func GuessingGame() {
 		if NumberGood(guess, Zufall) {
 			fmt.Println("Richtige geraten! xD")
 			return
-		} else {
-			if guess > Zufall {
-				fmt.Println("Zahl zu groß")
-			}
-			if guess < Zufall {
-				fmt.Println("Zahl zu klein")
-			}
 		}
 	}
 	fmt.Println("Zuviele falsche Zahlen! :(")
@@ -33,13 +26,23 @@ func ReadNumber() int {
 	return n
 }
 
-func NumberGood(n, z int) bool {
+func NumberGood(guess, Zufall int) bool {
 
-	return n == z
+	if guess == Zufall {
+		return true
+	} else {
+		if guess > Zufall {
+			fmt.Println("Zahl zu groß")
+		}
+		if guess < Zufall {
+			fmt.Println("Zahl zu klein")
+		}
+	}
+	return false
 
 }
 
 func Zufallszahl() int {
-	z := rand.Intn(5)
+	z := rand.Intn(16) + 1
 	return z
 }
