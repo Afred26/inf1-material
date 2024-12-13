@@ -18,11 +18,12 @@ func GuessingGame() {
 		guess := ReadNumber()
 
 		if NumberGood(guess, Zufall) {
+			fmt.Printf("Sie haben %d Versuche gebraucht.", i+1)
 			return
 		}
 	}
-	fmt.Println("Zuviele falsche Zahlen! :(")
-	fmt.Println("Die richtige Zahl war", Zufall)
+	//fmt.Println("Zuviele falsche Zahlen! :(")
+	fmt.Printf("Zuviele falsche Zahlen! :(\nDie richtige Zahl war %d", Zufall)
 }
 
 func ReadNumber() int {
