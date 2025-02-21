@@ -16,3 +16,13 @@ func Hanoi(s, m, z string, h int) {
 	}
 
 }
+
+func Hanoi2(s, m, z string, h int) {
+	if h == 0 {
+		return
+	} else {
+		Hanoi2(s, z, m, h-1)
+		move(s, z)
+		Hanoi2(m, s, z, h-1)
+	}
+}
